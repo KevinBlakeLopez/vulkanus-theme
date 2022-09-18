@@ -16,9 +16,11 @@
     </script>
 
     <script src="https://cdn.tailwindcss.com" defer></script>
+
+    <script src="{{ 'application.js' | asset_url }}" defer></script>
   </head>
 
-  <body>
+  <body class="bg-slate-800 text-zinc-100">
     {% section 'header' %}
 
     {{ content_for_layout }}

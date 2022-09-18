@@ -1,12 +1,16 @@
 <header>
-  <div class="flex">
-    <nav>
+  <div class="relative flex justify-between px-4 py-3">
+    <div class="w-5" id="mobile-button">
+      {% render 'MobileHamburgerMajor' %}
+    </div>
+    <h1>{{ shop.name }}</h1>
+    <div class="w-5">{% render 'CartMajor' %}</div>
+  </div>
+  <div>
+    <nav class="hidden fixed top-0 left-0 flex flex-col bg-black text-white" id="mobile-menu">
       {% for link in linklists['main-menu'].links %}
         <a href="{{ link.url }}">{{ link.title }}</a>
       {% endfor %}
     </nav>
-    <img src="{{ 'MobileHamburgerMajor.svg' | asset_img_url }}" loading="lazy">
-    <h1>Vulkanus Theme</h1>
-    <img src="{{ 'CartMajor.svg' | asset_img_url }}" loading="lazy">
   </div>
 </header>
