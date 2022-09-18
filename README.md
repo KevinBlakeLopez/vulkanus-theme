@@ -1,6 +1,6 @@
 # Dusk
 
-A bare-bones, skeleton starter theme for Shopify. To be clear, Dusk is not intended to be a production theme. It doesn't really do anything, and, therefore, brings zero value to merchants in its current state. Dusk is a _starting point_, for you, the developer, with minimal boilerplate and zero opinions.
+A bare-bones, skeleton starter theme for Shopify. To be clear, Dusk is not intended to be a production theme. It doesn't really do anything, and, therefore, brings zero value to merchants in its current state. Dusk is a _starting point_, for you, the developer, with minimal boilerplate and zero opinions. Vulkanus
 
 ## From Dusk to Dawn
 
