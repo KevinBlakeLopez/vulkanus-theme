@@ -1,0 +1,12 @@
+<header>
+  <div class="flex">
+    <nav>
+      {% for link in linklists['main-menu'].links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+    </nav>
+    <img src="{{ 'MobileHamburgerMajor.svg' | asset_img_url }}" loading="lazy">
+    <h1>Vulkanus Theme</h1>
+    <img src="{{ 'CartMajor.svg' | asset_img_url }}" loading="lazy">
+  </div>
+</header>

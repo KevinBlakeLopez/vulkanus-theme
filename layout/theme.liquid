@@ -10,13 +10,17 @@
     </title>
 
     {{ content_for_header }}
-   
-    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com" defer></script>
   </head>
 
   <body>
- 
-    {{ content_for_layout }}
+    {% section 'header' %}
 
+    {{ content_for_layout }}
   </body>
 </html>
