@@ -1,13 +1,16 @@
-<header>
+<header class="bg-slate-900 text-neutral-100">
   <div class="relative flex justify-between px-4 py-3">
-    <div class="w-5" id="mobile-button">
+    <div class="md:hidden w-5" id="mobile-button">
       {% render 'MobileHamburgerMajor' %}
     </div>
     <h1>{{ shop.name }}</h1>
     <div class="w-5">{% render 'CartMajor' %}</div>
   </div>
   <div>
-    <nav class="hidden h-screen w-full fixed top-0 left-0 flex flex-col bg-black text-white" id="mobile-menu">
+    <nav
+      class="hidden md:block h-screen w-full fixed top-0 left-0 flex md:flex-col bg-black text-white md:bg-slate-900 md:text-neutral-100"
+      id="mobile-menu"
+    >
       {% for link in linklists['main-menu'].links %}
         <a href="{{ link.url }}" class="inline">{{ link.title }}</a>
       {% endfor %}
