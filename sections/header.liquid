@@ -11,6 +11,9 @@
       {% for link in linklists['main-menu'].links %}
         <a href="{{ link.url }}">{{ link.title }}</a>
       {% endfor %}
+      <div class="w-5" id="cancel-mobile">
+        {% render 'MobileCancelMajor' %}
+      </div>
     </nav>
   </div>
 </header>
