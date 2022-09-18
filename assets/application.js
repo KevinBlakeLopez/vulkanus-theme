@@ -7,5 +7,5 @@ mobile_button.addEventListener("click", () => {
 });
 
 mobile_cancel.addEventListener("click", () => {
-    mobile_menu.classList.toggle("hidden");
-}
+  mobile_menu.classList.toggle("hidden");
+});
