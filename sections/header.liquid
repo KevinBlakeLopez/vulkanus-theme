@@ -7,7 +7,7 @@
     <div class="w-5">{% render 'CartMajor' %}</div>
   </div>
   <div>
-    <nav class="hidden h-screen w-2/3 fixed top-0 left-0 flex flex-col bg-black text-white" id="mobile-menu">
+    <nav class="hidden h-screen w-full fixed top-0 left-0 flex flex-col bg-black text-white" id="mobile-menu">
       {% for link in linklists['main-menu'].links %}
         <a href="{{ link.url }}" class="inline">{{ link.title }}</a>
       {% endfor %}
