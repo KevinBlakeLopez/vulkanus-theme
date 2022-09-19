@@ -1,4 +1,4 @@
 <p>This is the collection listing section.</p>
 {% for collection in collections %}
-  {{- collection.title | link_to: collection.url }}
+  {{ collection.title | link_to: collection.url }}
 {% endfor %}
