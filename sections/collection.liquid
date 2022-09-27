@@ -1,12 +1,17 @@
-{% for product in collection.products %}
-  {{ product.title }}
-  {{ product.featured_image }}
-{% endfor %}
-<div class="flex justify-between mx-4">
+<div class="flex justify-around">
   {% for product in collection.products %}
-    <div>
-      <p class="">{{ product.title }}</p>
-      {{ product | image_url: width: 200 | image_tag }}
-    </div>
+    {% if product.featured_image %}
+      <div class="py-5">
+        <p class="text-center pb-2">{{ product.title | link_to: product.url }}</p>
+        {{ product | image_url: width: 200 | image_tag | link_to: product.url }}
+        {% if product.available %}
+          <h5>In Stock!</h5>
+        {% else %}
+          <h5>Out of Stock</h5>
+        {% endif %}
+
+        <p>{{ product.price | money }}</p>
+      </div>
+    {% endif %}
   {% endfor %}
 </div>

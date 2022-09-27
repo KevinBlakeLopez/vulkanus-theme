@@ -1,4 +1,59 @@
 <p>This is the product section.</p>
-{% form 'product' %}
-  <input type="submit" value="Add to cart">
-{% endform %}
+<section class="flex justify-center">
+  <div x-data="
+      {
+        addToCart() {
+          let formData = new FormData($refs.product_form);
+
+          fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => {
+            return response.json();
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+        }
+      }
+    ">
+    {% form 'product', product, x-ref: 'product_form' %}
+      <h3 class="text-center">{{ product.title }}</h3>
+
+      {{ product | image_url: width: 200 | image_tag }}
+      {% if product.available %}
+        <h5>In Stock!</h5>
+      {% endif %}
+      {{ product.price | money }}
+      {{ product.compare_at_price | money }}
+      {{ product.description }}
+      {% if product.available %}
+        <div class="flex flex-col border border-solid">
+          <button class="border rounded-full bg-black p-2" type="button" name="add" @click="addToCart()">
+            Add to Cart
+          </button>
+          <label for="quantity">Quantity</label>
+          <input class="text-black" type="text" name="quantity" id="quantity" min="1" value="1">
+          <label for="properties">Properties</label>
+          <input class="text-black" type="text" name="properties[Monogram]" id="properites">
+          {{ form | payment_button }}
+          <select class="text-black" name="id" id="id">
+            {% for variant in product.variants %}
+              <option
+                value="{{ variant.id }}"
+                {% if variant == product.selected_or_first_available_variant %}
+                  selected="selected"
+                {% endif %}
+              >
+                {{ variant.title }} - {{ variant.price | money }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      {% else %}
+        <h5>Out of Stock!</h5>
+      {% endif %}
+    {% endform %}
+  </div>
+</section>
