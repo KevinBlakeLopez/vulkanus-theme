@@ -1,17 +1,18 @@
-<div class="flex justify-around">
-  {% for product in collection.products %}
-    {% if product.featured_image %}
-      <div class="py-5">
-        <p class="text-center pb-2">{{ product.title | link_to: product.url }}</p>
-        {{ product | image_url: width: 200 | image_tag | link_to: product.url }}
-        {% if product.available %}
-          <h5>In Stock!</h5>
-        {% else %}
-          <h5>Out of Stock</h5>
-        {% endif %}
-
-        <p>{{ product.price | money }}</p>
-      </div>
-    {% endif %}
-  {% endfor %}
+<div>
+  <h2 class="pl-6 py-4 text-3xl">{{ collection.title }}</h2>
+  <div>
+    <h4 class="pl-6 inline">Filter and sort</h4>
+    <h4 class="inline pr-6 float-right">{{ collection.products_count }} Products</h4>
+  </div>
+  <div class="flex flex-wrap">
+    {% for product in collection.products %}
+      {% if product.featured_image %}
+        <div class="py-5 mx-4">
+          {{ product | image_url: width: 300 | image_tag | link_to: product.url }}
+          <p class="py-2">{{ product.title | link_to: product.url }}</p>
+          <p class="text-xl text-amber-400">{{ product.price | money_without_trailing_zeros }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
 </div>

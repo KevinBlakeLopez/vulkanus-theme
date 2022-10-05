@@ -3,7 +3,7 @@
     <div class="md:hidden w-5" id="mobile-button">
       {% render 'MobileHamburgerMajor' %}
     </div>
-    <h1>{{ shop.name }}</h1>
+    {{ 'logo.png' | asset_img_url | image_tag: 'Dusk Herbs' }}
     <nav
       class="
         hidden h-screen w-full fixed top-0 left-0 flex flex-col bg-black text-white
