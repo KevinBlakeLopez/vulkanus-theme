@@ -2,3 +2,16 @@ body {
     background-color: rgb(30 41 59);
     color: rgb(244 244 245);
 }
+
+.shopify-payment-button__button.shopify-payment-button__button--unbranded {
+    background-color: rgb(15 23 42) !important;
+    border: 2px solid !important;
+    color: rgb(244 244 245) !important;
+}
+  
+  /* Hover */
+.shopify-payment-button__button.shopify-payment-button__button--unbranded:hover {
+    background-color: #f59e0b !important;
+    border: 2px solid !important;
+    color: white !important;
+}

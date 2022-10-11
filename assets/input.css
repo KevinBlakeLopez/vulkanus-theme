@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind utilities;
 @tailwind components;
+
+@layer components {
+    .custom-select {
+        width: 30%;
+        padding: 10px;
+        /* Replace Default styling (arrow) */
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.127L12 18.127L20 10.127H4Z" fill="%238E8E93"/></svg>');
+        background-repeat: no-repeat;
+        background-position-y: 50%;
+        background-position-x: 95%;
+     }
+}

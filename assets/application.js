@@ -33,24 +33,30 @@ if (location.search.length) {
     let keyValue = params[i].split('=');
 
     if (keyValue.length) {
-      
-      [decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
-
       Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
     }
   }
 }
 
 // Update sort_by query parameter on select change
+if (document.querySelector("#sort-by")) {
 document.querySelector('#sort-by').addEventListener('change', function(e) {
   let value = e.target.value;
 
   Shopify.queryParams.sort_by = value;
   location.search = new URLSearchParams(Shopify.queryParams).toString();
 });
+}
 
 //quantity buttons on product page
 const quant = document.getElementById("quant");
-const quantVal = quant.getAttribute(value);
-document.getElementById("decrease").addEventListener("click", () => quant.setAttribute(value, --quantVal));
-document.getElementById("increase").addEventListener("click", () => quant.setAttribute(value, ++quantVal));
+let quantVal = parseInt(quant.value);
+
+document.getElementById("minus").addEventListener("click", () => {
+  quantVal ? --quantVal : quantVal;
+  quant.setAttribute("value", quantVal.toString());
+});
+document.getElementById("plus").addEventListener("click", () => {
+  ++quantVal;
+  quant.setAttribute("value", quantVal.toString());
+});
