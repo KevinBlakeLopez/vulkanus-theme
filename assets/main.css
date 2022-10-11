@@ -15,3 +15,7 @@ body {
     border: 2px solid !important;
     color: white !important;
 }
+
+.shopify-payment-button__more-options {
+    display: none !important;
+}
