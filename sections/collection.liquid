@@ -1,7 +1,9 @@
 <div class="flex justify-center mt-4">
   <div class="w-11/12">
     <h2 class="py-4 text-3xl">{{ collection.title }}</h2>
-    <form class="flex">
+    <form>
+      <span class="md:hidden">Filter and sort: </span>
+      <section class="hidden md:inline">
       {% comment %} filter section {% endcomment %}
       <div class="inline-flex">
         <span class="mr-4">Filter: </span>
@@ -90,8 +92,10 @@
         </details>
         {%- endfor -%}  
       </div>
+
       {% comment %} sort section {% endcomment %}
-      <select id="sort-by">
+      <span class="mr-4">Sort by: </span>
+      <select class="bg-bak hover:bg-amber-500 p-2 custom-select" id="sort-by">
         {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
 
         {% for option in collection.sort_options %}
@@ -100,9 +104,12 @@
           </option>
         {% endfor %}
       </select>
+    </section>
 
       <span class="ml-auto">{{ collection.products_count }} Products</span>
-      <div class="">
+
+      {% comment %} clear filters  {% endcomment %}
+      <div>
         {%- for filter in collection.filters -%}
           {% if filter.active_values.size > 0 %}
             <a href="{{ collection.url }}?sort_by={{ collection.sort_by }}" class="">Clear all</a>
@@ -125,6 +132,7 @@
         {%- endfor -%}
       </div>
     </form>
+    {% comment %} products of collection {% endcomment %}
     <div class="flex flex-wrap justify-center md:justify-between gap-x-1">
     {% for product in collection.products %}
       {% if product.featured_image %}

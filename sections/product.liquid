@@ -1,5 +1,5 @@
-<section class="flex justify-center m-4">
-  <div x-data="
+<section class="flex justify-center my-4">
+  <div class="w-11/12" x-data="
       {
         addToCart() {
           let formData = new FormData($refs.product_form);
@@ -39,7 +39,7 @@
       {% if product.available %}
         <div class="flex flex-col my-4">
           <h4 class="mb-2">Select Size:</h4>
-          <select class="custom-select bg-hed hover:bg-amber-500 border-2 rounded-sm mb-4 w-1/2 md:w-1/6 appearance-none" name="id" id="id">
+          <select class="custom-select bg-hed hover:bg-amber-500 border-2 rounded-sm mb-4 w-1/2 md:w-1/4 appearance-none" name="id" id="id">
             {% for variant in product.variants %}
               <option
                 value="{{ variant.id }}"
