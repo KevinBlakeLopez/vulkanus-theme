@@ -4,7 +4,7 @@
 
 @layer components {
     .custom-select {
-        width: 30%;
+        width: 200px;
         padding: 10px;
         /* Replace Default styling (arrow) */
         appearance: none;

@@ -18,7 +18,13 @@
     <link rel="stylesheet" href="{{ 'output.css' | asset_url }}">
     <link rel="stylesheet" href="{{ 'main.css' | asset_url }}">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="{{ 'application.js' | asset_url }}" defer></script>
+    <script src="{{ 'index.js' | asset_url }}" defer></script>
+    {% if template.name == 'collection' %}
+      <script src="{{ 'collection.js' | asset_url }}" defer></script>
+    {% endif %}
+    {% if template.name == 'product' %}
+      <script src="{{ 'product.js' | asset_url }}" defer></script>
+    {% endif %}
   </head>
 
   <body>

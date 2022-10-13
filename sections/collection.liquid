@@ -2,14 +2,16 @@
   <div class="w-11/12">
     <h2 class="py-4 text-3xl">{{ collection.title }}</h2>
     <form>
-      <span class="md:hidden">Filter and sort: </span>
-      <section class="hidden md:inline">
+      <div class="md:hidden" id="filter-button">Filter and sort </div>
+      <section class="hidden w-10/12 h-screen fixed top-0 right-0 bg-gray-800 p-4
+        md:relative md:inline md:h-auto md:bg-bak md:p-0" id="filter-menu">
       {% comment %} filter section {% endcomment %}
-      <div class="inline-flex">
-        <span class="mr-4">Filter: </span>
+      <div class="flex-col md:flex-row md:inline-flex">
+        <div class="text-center md:hidden">Filter and sort </div>
+        <span class="hidden mr-4 md:inline">Filter: </span>
         {%- for filter in collection.filters -%}
         <details id="details" class="mr-4">
-          <summary class="flex items-center">
+          <summary class="flex items-center my-4 md:my-0">
             <span class="mr-0.5">{{ filter.label }}</span>
             {% render 'dropdown' %}
             <div>
@@ -94,8 +96,9 @@
       </div>
 
       {% comment %} sort section {% endcomment %}
-      <span class="mr-4">Sort by: </span>
-      <select class="bg-bak hover:bg-amber-500 p-2 custom-select" id="sort-by">
+      <div class="my-2 md:inline md:my-0">
+        <span class="mr-4">Sort by: </span>
+        <select class="bg-bak hover:bg-amber-500 p-2 custom-select" id="sort-by">
         {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
 
         {% for option in collection.sort_options %}
@@ -104,6 +107,8 @@
           </option>
         {% endfor %}
       </select>
+      </div>
+      
     </section>
 
       <span class="ml-auto">{{ collection.products_count }} Products</span>
@@ -132,6 +137,7 @@
         {%- endfor -%}
       </div>
     </form>
+
     {% comment %} products of collection {% endcomment %}
     <div class="flex flex-wrap justify-center md:justify-between gap-x-1">
     {% for product in collection.products %}
