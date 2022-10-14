@@ -1,9 +1,8 @@
 <header class="bg-slate-900 text-neutral-100">
   <div class="flex justify-center">
     <div class="relative flex justify-between py-3 w-11/12 md:w-9/10">
-      <div class="md:hidden w-5" id="mobile-button">
-        {% render 'MobileHamburgerMajor' %}
-      </div>
+      <div class="md:hidden w-5" id="mobile-button">{% render 'MobileHamburgerMajor' %}</div>
+      <div class="hidden w-5" id="cancel">{% render 'MobileCancelMajor' %}</div>
       <img src="{{ 'logo.png' | asset_img_url: '1400x' }}" alt="Dusk Herbs" width="100">
       <nav
         class="
@@ -25,9 +24,6 @@
             <a href="{{ childlink.url }}">{{ childlink.title }}</a>
           {% endfor %}
         {% endfor %}
-        <div class="w-5 fixed top-14 right-20 md:hidden" id="mobile-cancel">
-          {% render 'MobileCancelMajor' %}
-        </div>
       </nav>
       <div class="w-5">{% render 'CartMajor' %}</div>
     </div>
