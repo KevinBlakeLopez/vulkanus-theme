@@ -1,5 +1,5 @@
 //handle click outside filter dropdown
-document.addEventListener('click', (event) => {
+document.addEventListener("click", (event) => {
     const details = document.querySelectorAll("#details");
   
     details.forEach(detail => {
@@ -20,9 +20,15 @@ filter_button.addEventListener("click", () => {
   filter_menu.classList.toggle("hidden");
 });
 
-// filter_cancel.addEventListener("click", () => {
-//   filter_menu.classList.toggle("hidden");
-// });
+filter_cancel.addEventListener("click", () => {
+  filter_menu.classList.toggle("hidden");
+});
+
+document.addEventListener("click", event => {
+  if (!filter_menu.contains(event.target) && !filter_button.contains(event.target)) {
+    filter_menu.classList.add("hidden");
+  }
+});
 
 
 //script for sorting

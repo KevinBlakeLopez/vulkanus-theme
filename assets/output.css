@@ -583,6 +583,34 @@ video {
   right: 0.75rem;
 }
 
+.right-7 {
+  right: 1.75rem;
+}
+
+.right-9 {
+  right: 2.25rem;
+}
+
+.right-8 {
+  right: 2rem;
+}
+
+.right-5 {
+  right: 1.25rem;
+}
+
+.right-20 {
+  right: 5rem;
+}
+
+.top-12 {
+  top: 3rem;
+}
+
+.top-14 {
+  top: 3.5rem;
+}
+
 .m-6 {
   margin: 1.5rem;
 }
@@ -714,6 +742,18 @@ video {
 
 .w-1\/4 {
   width: 25%;
+}
+
+.w-3\/4 {
+  width: 75%;
+}
+
+.w-4\/5 {
+  width: 80%;
+}
+
+.w-5\/6 {
+  width: 83.333333%;
 }
 
 .appearance-none {
@@ -915,6 +955,10 @@ video {
 @media (min-width: 768px) {
   .md\:relative {
     position: relative;
+  }
+
+  .md\:top-0 {
+    top: 0px;
   }
 
   .md\:my-0 {

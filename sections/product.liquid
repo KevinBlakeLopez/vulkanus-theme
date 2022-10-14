@@ -1,5 +1,6 @@
 <section class="flex justify-center my-4">
-  <div class="w-11/12" x-data="
+  <div class="w-11/12" 
+    x-data="
       {
         addToCart() {
           let formData = new FormData($refs.product_form);
@@ -16,7 +17,8 @@
           });
         }
       }
-    ">
+    "
+  >
     {% form 'product', product, x-ref: 'product_form' %}
       <section class="md:flex">
         {{ product | image_url: width: 400 | image_tag }}
