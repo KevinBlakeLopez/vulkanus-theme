@@ -11,22 +11,23 @@ document.addEventListener("click", (event) => {
 
 //filter mobile "drawer"
 const filter_button = document.querySelector("#filter-button");
-
-
 const filter_menu = document.querySelector("#filter-menu");
 const filter_cancel = document.querySelector("#filter-cancel");
 
 filter_button.addEventListener("click", () => {
   filter_menu.classList.toggle("hidden");
+  toggleDark();
 });
 
 filter_cancel.addEventListener("click", () => {
   filter_menu.classList.toggle("hidden");
+  toggleDark();
 });
 
 document.addEventListener("click", event => {
-  if (!filter_menu.contains(event.target) && !filter_button.contains(event.target)) {
-    filter_menu.classList.add("hidden");
+  if (!filter_menu.contains(event.target) && !filter_button.contains(event.target) && !filter_menu.classList.contains("hidden")) {
+    filter_menu.classList.toggle("hidden");
+    toggleDark();
   }
 });
 
