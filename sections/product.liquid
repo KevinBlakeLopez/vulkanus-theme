@@ -5,7 +5,7 @@
   <div class="md:w-1/2 my-10 md:mt-0 md:ml-10">
     <h2 class="text-3xl mb-6">{{ product.title }}</h2>
     {% comment %} how to dynamically re-render the variant.price here? {% endcomment %}
-    <h3 class="text-xl text-amber-500 mb-6">{{ product.price | money }}</h3>
+    <h3 id="price" class="text-xl text-amber-500 mb-6">{{ product.price | money }}</h3>
 
     {% form 'product', product %}
       <label class="mr-6 md:block" for="quantity">Quantity:</label>
@@ -23,6 +23,7 @@
         class="bg-hed hover:bg-amber-500 active:text-black border-2 rounded-sm mb-8 p-2 w-[243px]"
         name="size"
         id="size"
+        onChange="updatePrice(this);"
       >
         {% for variant in product.variants %}
           <option
@@ -30,7 +31,9 @@
             {% if variant == product.selected_or_first_available_variant %}
               selected="selected"
             {% endif %}
-          ></option>
+          >
+            {{ variant.title }}
+          </option>
         {% endfor %}
       </select>
 
@@ -106,6 +109,17 @@
 
   observer.observe(productRecommendationsSection);
 {% endjavascript %}
+
+{% capture variantsString %}
+  {% for variant in product.variants %}
+    "{{ variant.id }}":"{{ variant.price }}"{% if forloop.last != true %},{% endif %}
+  {% endfor %}
+{% endcapture %}
+{% assign variantsString = variantsString | prepend: '{' | append: '}' %}
+<script>
+  let variantString = JSON.parse({{ variantsString | strip_newlines | json }});
+</script>
+
 {% schema %}
 {
   "name": "Product recommendations",
