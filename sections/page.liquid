@@ -1,14 +1,6 @@
 <p>This is the page section.</p>
 
-<div class="flex flex-wrap justify-center md:justify-between gap-x-1">
-  {% for product in collection.products %}
-    {% if product.featured_image %}
-      <div class="py-5">
-        {% comment %} update width and height to 400 for mobile {% endcomment %}
-        {{ product | image_url: width: 350, height: 350 | image_tag | link_to: product.url }}
-        <p class="py-2">{{ product.title | link_to: product.url }}</p>
-        <p class="text-xl text-amber-400">{{ product.price | money_without_trailing_zeros }}</p>
-      </div>
-    {% endif %}
-  {% endfor %}
+<div>
+  <h1>{{ page.title }}</h1>
+  <p>{{ page.content }}</p>
 </div>

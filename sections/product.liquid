@@ -21,19 +21,24 @@
       <label class="mr-14 md:block" for="size">Size:</label>
       <select
         class="bg-hed hover:bg-amber-500 active:text-black border-2 rounded-sm mb-8 p-2 w-[243px]"
-        name="size"
-        id="size"
+        name="id"
+        id="ProductSelect-{{ section.id }}"
+        class="product-form__variants no-js"
         onChange="updatePrice(this);"
       >
         {% for variant in product.variants %}
-          <option
-            value="{{ variant.id }}"
-            {% if variant == product.selected_or_first_available_variant %}
-              selected="selected"
-            {% endif %}
-          >
-            {{ variant.title }}
-          </option>
+          {% if variant.available %}
+            <option
+              value="{{ variant.id }}"
+              {% if variant == product.selected_or_first_available_variant %}
+                selected="selected"
+              {% endif %}
+            >
+              {{ variant.title }}
+            </option>
+          {% else %}
+            <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+          {% endif %}
         {% endfor %}
       </select>
 
@@ -80,35 +85,37 @@
     {%- endif -%}
   </div>
 {% endcomment %}
-{% javascript %}
-  const handleIntersection = (entries, observer) => {
-    if (!entries[0].isIntersecting) return;
+{% comment %}
+   {% javascript %}
+    const handleIntersection = (entries, observer) => {
+      if (!entries[0].isIntersecting) return;
 
-    observer.unobserve(productRecommendationsSection);
+      observer.unobserve(productRecommendationsSection);
 
-    const url = productRecommendationsSection.dataset.url;
+      const url = productRecommendationsSection.dataset.url;
 
-    fetch(url)
-      .then((response) => response.text())
-      .then((text) => {
-        const html = document.createElement('div');
-        html.innerHTML = text;
-        const recommendations = html.querySelector('.product-recommendations');
+      fetch(url)
+        .then((response) => response.text())
+        .then((text) => {
+          const html = document.createElement('div');
+          html.innerHTML = text;
+          const recommendations = html.querySelector('.product-recommendations');
 
-        if (recommendations && recommendations.innerHTML.trim().length) {
-          productRecommendationsSection.innerHTML = recommendations.innerHTML;
-        }
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-  };
+          if (recommendations && recommendations.innerHTML.trim().length) {
+            productRecommendationsSection.innerHTML = recommendations.innerHTML;
+          }
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    };
 
-  const productRecommendationsSection = document.querySelector('.product-recommendations');
-  const observer = new IntersectionObserver(handleIntersection, { rootMargin: '0px 0px 200px 0px' });
+    const productRecommendationsSection = document.querySelector('.product-recommendations');
+    const observer = new IntersectionObserver(handleIntersection, { rootMargin: '0px 0px 200px 0px' });
 
-  observer.observe(productRecommendationsSection);
-{% endjavascript %}
+    observer.observe(productRecommendationsSection);
+  {% endjavascript %}
+{% endcomment %}
 
 {% capture variantsString %}
   {% for variant in product.variants %}
