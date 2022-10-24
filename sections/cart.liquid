@@ -1,4 +1,4 @@
-{{ section.settings.cart.title }}
+<h1>{{ section.settings.cart.title }}</h1>
 <div class="flex flex-col items-center">
   <form action="{{ routes.cart_url }}" method="post">
     {% for item in cart.items %}
@@ -11,14 +11,20 @@
             <input class="text-black w-1/6 mr-3" type="text" name="updates[]" value="{{ item.quantity }}">
             <a class="underline" href="{{ item.url_to_remove }}">Remove</a>
           </div>
+          <div>
+            <label>What do you want engraved on your precious?</label>
+            <input type="text" name="attributes[precious]" value="{{ cart.attributes.precious }}">
+          </div>
         </div>
       </section>
     {% endfor %}
     <input class="block w-full bg-black border p-2 px-8 m-6 " type="submit" name="checkout" value="Checkout">
   </form>
-
+  <p>{{ cart.attribute }}</p>
+  <h2>{{ cart.item_count }}</h2>
   <h2>{{ cart.total_price | money }}</h2>
   <h2>{{ cart.original_total_price | money }}</h2>
   <h2>{{ cart.items_subtotal_price | money }}</h2>
   <h2>{{ cart.taxes_includes | money }}</h2>
+  <h2>{{ cart.checkout_charge_amount }}</h2>
 </div>
