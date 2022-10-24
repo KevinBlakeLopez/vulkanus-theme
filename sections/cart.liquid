@@ -16,7 +16,7 @@
     {% endfor %}
     <input class="block bg-black border p-2 px-8 m-6 " type="submit" name="checkout" value="Checkout">
   </form>
-  {{ cart.total_price }}
-  {{ cart.original_total_price }}
-  {{ cart.items_subtotal_price }}
+  {{ cart.total_price | money }}
+  {{ cart.original_total_price | money }}
+  {{ cart.items_subtotal_price | money }}
 </div>
