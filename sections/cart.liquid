@@ -9,7 +9,7 @@
           <h4 class="inline">{{ item.price | money }}</h4>
           <h5 class="mb-3">{{ item.price | money }}</h5>
           <div class="flex">
-            <input class="text-black w-1/6 mr-3" type="text" name="updates[]" value="{{ item.quantity }}">
+            <input class="text-black w-80 mr-3" type="text" name="updates" value="{{ item.quantity }}">
             <a class="underline" href="{{ item.url_to_remove }}">Remove</a>
           </div>
           <div>
