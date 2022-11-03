@@ -1,6 +1,6 @@
-<h1 class="mt-4 ml-4 text-3xl">{{ section.settings.cart.title }}Your Cart</h1>
+<h1 class="mt-4 ml-4 mb-4 text-3xl">{{ section.settings.cart.title }}Your Cart</h1>
 <div class="flex flex-col items-center">
-  <div class="flex justify-around">
+  <div class="flex">
     <p>PRODUCT</p>
     <p>TOTAL</p>
   </div>
@@ -9,17 +9,22 @@
     {% for item in cart.items %}
       <section class="flex mb-36">
         <div class="p-6">{{ item | image_url: width: 400 | image_tag }}</div>
-        <div class="flex flex-col pl-2 pt-6 pr-6 pb-6">
+        <div class="flex flex-col pl-1 pt-6 pr-6 pb-6">
           <h5 class="mb-1 inline">{{ item.title }}</h5>
           <h4 class="inline">{{ item.price | money }}</h4>
           <h5 class="mb-3">{{ item.price | money }}</h5>
           <div class="flex">
-            <input class="text-black w-28 mr-3" type="text" name="updates" value="{{ item.quantity }}">
+            <input class="text-black w-36 mr-3" type="text" name="updates" value="{{ item.quantity }}">
             <a class="underline" href="{{ item.url_to_remove }}">Remove</a>
           </div>
           <div>
             <label>What do you want engraved on your precious?</label>
-            <input class="text-black" type="text" name="attributes[precious]" value="{{ cart.attributes.precious }}">
+            <input
+              class="text-black w-36"
+              type="text"
+              name="attributes[precious]"
+              value="{{ cart.attributes.precious }}"
+            >
           </div>
         </div>
       </section>
