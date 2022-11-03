@@ -7,7 +7,7 @@
 
   <form action="{{ routes.cart_url }}" method="post">
     {% for item in cart.items %}
-      <section class="flex">
+      <section class="flex mb-36">
         <div class="p-6">{{ item | image_url: width: 400 | image_tag }}</div>
         <div class="flex flex-col pl-2 pt-6 pr-6 pb-6">
           <h5 class="mb-1 inline">{{ item.title }}</h5>
@@ -24,13 +24,14 @@
         </div>
       </section>
     {% endfor %}
-    <input class="block w-4/5 md:w-full bg-black border p-2 px-8 m-6 " type="submit" name="checkout" value="Checkout">
+    <h2>Subtotal {{ cart.items_subtotal_price | money }}</h2>
+    <input class="block w-80 md:w-full bg-black border p-2 px-8 m-6 " type="submit" name="checkout" value="Checkout">
   </form>
   <p>{{ cart.attributes }}</p>
   <h2>{{ cart.item_count }}</h2>
   <h2>{{ cart.total_price | money }}</h2>
   <h2>{{ cart.original_total_price | money }}</h2>
-  <h2>{{ cart.items_subtotal_price | money }}</h2>
+
   <h2>{{ cart.taxes_includes | money }}</h2>
   <h2>{{ cart.checkout_charge_amount }}</h2>
 </div>
