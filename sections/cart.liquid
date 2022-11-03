@@ -1,8 +1,8 @@
 <h1 class="mt-4 ml-4 mb-4 text-3xl">{{ section.settings.cart.title }}Your Cart</h1>
 <div class="flex flex-col items-center">
   <div class="flex">
-    <p>PRODUCT</p>
-    <p>TOTAL</p>
+    <p class="text-xs">PRODUCT</p>
+    <p class="text-xs">TOTAL</p>
   </div>
 
   <form action="{{ routes.cart_url }}" method="post">
@@ -34,11 +34,13 @@
     <h2 class="text-center">Subtotal {{ cart.items_subtotal_price | money }}</h2>
     <input class="block w-80 md:w-full bg-black border p-2 px-8 m-6 " type="submit" name="checkout" value="Checkout">
   </form>
-  <p>{{ cart.attributes }}</p>
-  <h2>{{ cart.item_count }}</h2>
-  <h2>{{ cart.total_price | money }}</h2>
-  <h2>{{ cart.original_total_price | money }}</h2>
+  {% comment %}
+     <p>{{ cart.attributes }}</p>
+    <h2>{{ cart.item_count }}</h2>
+    <h2>{{ cart.total_price | money }}</h2>
+    <h2>{{ cart.original_total_price | money }}</h2>
 
-  <h2>{{ cart.taxes_includes | money }}</h2>
-  <h2>{{ cart.checkout_charge_amount }}</h2>
+    <h2>{{ cart.taxes_includes | money }}</h2>
+    <h2>{{ cart.checkout_charge_amount }}</h2>
+  {% endcomment %}
 </div>
