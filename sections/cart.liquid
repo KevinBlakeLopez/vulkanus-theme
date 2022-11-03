@@ -37,9 +37,12 @@
     <hr class="mb-12">
     <div class="text-center">
       <h2 class="font-medium inline">Subtotal</h2>
-      <h2 class="text-xl inline">{{ cart.items_subtotal_price | money }}</h2>
+      <h2 class="text-l inline">{{ cart.items_subtotal_price | money }}</h2>
+      <p class="text-xs">Taxes and shipping calculated at checkout</p>
     </div>
-    <input class="block w-80 md:w-full bg-black border p-2 px-8 m-6 " type="submit" name="checkout" value="Checkout">
+    <div class="m-auto">
+      <input class="block w-80 md:w-full bg-black border p-2 px-8 m-6 " type="submit" name="checkout" value="Check out">
+    </div>
   </form>
   {% comment %}
      <p>{{ cart.attributes }}</p>
