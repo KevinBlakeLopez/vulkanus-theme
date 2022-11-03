@@ -1,9 +1,9 @@
 <h1 class="mt-4 ml-4 mb-4 text-3xl">{{ section.settings.cart.title }}Your Cart</h1>
+<div class="flex justify-between">
+  <p class="text-xs">PRODUCT</p>
+  <p class="text-xs">TOTAL</p>
+</div>
 <div class="flex flex-col items-center">
-  <div class="flex">
-    <p class="text-xs">PRODUCT</p>
-    <p class="text-xs">TOTAL</p>
-  </div>
   <hr>
   <form class="mb-16" action="{{ routes.cart_url }}" method="post">
     {% for item in cart.items %}
