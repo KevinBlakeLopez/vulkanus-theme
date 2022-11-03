@@ -1,21 +1,23 @@
-<h1 class="mt-4 ml-4 mb-4 text-3xl">{{ section.settings.cart.title }}Your Cart</h1>
+<h1 class="mt-12 ml-4 mb-8 text-3xl">{{ section.settings.cart.title }}Your Cart</h1>
 <div class="flex justify-between mx-4">
   <p class="text-xs">PRODUCT</p>
   <p class="text-xs">TOTAL</p>
 </div>
 <div class="flex flex-col items-center">
-  <hr>
+  <hr class="my-4">
   <form class="mb-16" action="{{ routes.cart_url }}" method="post">
     {% for item in cart.items %}
       <section class="flex">
         <div class="p-4">{{ item | image_url: width: 400 | image_tag }}</div>
         <div class="flex flex-col pt-6 pr-6 pb-6">
-          <h5 class="mb-1 inline">{{ item.product.title }}</h5>
-          <h4 class="inline">{{ item.price | money }}</h4>
+          <div class="flex justify-between">
+            <h5 class="mb-1 inline">{{ item.product.title }}</h5>
+            <h4 class="inline">{{ item.price | money }}</h4>
+          </div>
           <h5>{{ item.variant.title }}</h5>
           <h5 class="mb-3">{{ item.price | money }}</h5>
-          <div class="flex">
-            <input class="text-black w-36 mr-3" type="text" name="updates[]" value="{{ item.quantity }}">
+          <div class="flex mb-8">
+            <input class="text-black w-36 mr-3 p-2" type="text" name="updates[]" value="{{ item.quantity }}">
             <a class="underline" href="{{ item.url_to_remove }}">Remove</a>
           </div>
           {% comment %}
@@ -32,7 +34,7 @@
         </div>
       </section>
     {% endfor %}
-    <hr>
+    <hr class="mb-12">
     <h2 class="text-center">Subtotal {{ cart.items_subtotal_price | money }}</h2>
     <input class="block w-80 md:w-full bg-black border p-2 px-8 m-6 " type="submit" name="checkout" value="Checkout">
   </form>
