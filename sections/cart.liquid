@@ -10,7 +10,7 @@
       <section class="flex mb-16">
         <div class="p-6">{{ item | image_url: width: 400 | image_tag }}</div>
         <div class="flex flex-col pl-1 pt-6 pr-6 pb-6">
-          <h5 class="mb-1 inline">{{ line_item.product.title }}</h5>
+          <h5 class="mb-1 inline">{{ item.product.title }}</h5>
           <h4 class="inline">{{ item.price | money }}</h4>
           <h5 class="mb-3">{{ item.price | money }}</h5>
           <div class="flex">
