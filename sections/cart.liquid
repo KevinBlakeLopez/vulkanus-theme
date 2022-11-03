@@ -1,4 +1,4 @@
-<h1 class="mt-12 ml-4 mb-8 text-3xl font-bold">{{ section.settings.cart.title }}Your Cart</h1>
+<h1 class="mt-12 ml-4 mb-8 text-3xl font-medium">{{ section.settings.cart.title }}Your Cart</h1>
 <div class="flex justify-between mx-4">
   <p class="text-xs">PRODUCT</p>
   <p class="text-xs">TOTAL</p>
@@ -11,8 +11,8 @@
         <div class="p-4">{{ item | image_url: width: 400 | image_tag }}</div>
         <div class="flex flex-col pt-6 pr-6 pb-6">
           <div class="flex justify-between">
-            <h5 class="mb-1 inline font-bold">{{ item.product.title }}</h5>
-            <h4 class="inline font-bold">{{ item.price | money }}</h4>
+            <h5 class="mb-1 inline font-medium">{{ item.product.title }}</h5>
+            <h4 class="inline font-medium">{{ item.price | money }}</h4>
           </div>
           <h5>{{ item.variant.title }}</h5>
           <h5 class="mb-3">{{ item.price | money }}</h5>
@@ -36,8 +36,8 @@
     {% endfor %}
     <hr class="mb-12">
     <div class="text-center">
-      <h2 class="font-bold">Subtotal</h2>
-      <h2 class="textxl">{{ cart.items_subtotal_price | money }}</h2>
+      <h2 class="font-medium inline">Subtotal</h2>
+      <h2 class="text-xl inline">{{ cart.items_subtotal_price | money }}</h2>
     </div>
     <input class="block w-80 md:w-full bg-black border p-2 px-8 m-6 " type="submit" name="checkout" value="Checkout">
   </form>
