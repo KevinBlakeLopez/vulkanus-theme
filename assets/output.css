@@ -1063,6 +1063,10 @@ video {
     float: right;
   }
 
+  .md\:m-auto {
+    margin: auto;
+  }
+
   .md\:my-0 {
     margin-top: 0px;
     margin-bottom: 0px;
