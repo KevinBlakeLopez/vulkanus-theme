@@ -12,18 +12,17 @@
     <form class="mb-16" action="{{ routes.cart_url }}" method="post">
       {% for item in cart.items %}
         <section class="flex justify-between">
-          <div class="basis-48 grow-0">{{ item | image_url: width: 400 | image_tag }}</div>
-          <div class="flex flex-col pl-4 pb-6">
-            <div class="flex justify-between">
+          <div>
+            <div class="basis-48 grow-0">{{ item | image_url: width: 400 | image_tag }}</div>
+            <div class="hidden md:flex flex-col pl-4 pb-6">
               <h5 class="mb-1 inline font-medium">{{ item.product.title }}</h5>
-              <h4 class="inline font-medium">{{ item.price | money }}</h4>
+              <h5 class="text-sm">{{ item.variant.title }}</h5>
+              <h5 class="text-sm mb-3">{{ item.price | money }}</h5>
             </div>
-            <h5 class="text-sm">{{ item.variant.title }}</h5>
-            <h5 class="text-sm mb-3">{{ item.price | money }}</h5>
-            <div class="flex mb-8">
-              <input class="text-black w-36 mr-3 p-2" type="text" name="updates[]" value="{{ item.quantity }}">
-              <a class="underline" href="{{ item.url_to_remove }}">Remove</a>
-            </div>
+          </div>
+          <div class="hidden md:flex mb-8">
+            <input class="text-black w-36 mr-3 p-2" type="text" name="updates[]" value="{{ item.quantity }}">
+            <a class="underline" href="{{ item.url_to_remove }}">Remove</a>
           </div>
           <div class="flex flex-col pl-4 pb-6">
             <div class="flex justify-between">
