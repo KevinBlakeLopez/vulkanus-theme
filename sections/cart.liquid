@@ -1,5 +1,5 @@
-<div class="w-5/6 m-auto">
-  <section class="ml-4 mr-6">
+<div class="w-11/12 m-auto">
+  <section>
     <h1 class="mt-12 mb-8 text-3xl font-medium">{{ section.settings.cart.title }}Your Cart</h1>
     <div class="flex justify-between">
       <p class="text-xs">PRODUCT</p>
@@ -12,8 +12,8 @@
     <form class="mb-16" action="{{ routes.cart_url }}" method="post">
       {% for item in cart.items %}
         <section class="flex justify-between">
-          <div class="p-4 basis-48 grow-0">{{ item | image_url: width: 400 | image_tag }}</div>
-          <div class="flex flex-col pt-3 pr-6 pb-6">
+          <div class="basis-48 grow-0">{{ item | image_url: width: 400 | image_tag }}</div>
+          <div class="flex flex-col pl-2 pr-6 pb-6">
             <div class="flex justify-between">
               <h5 class="mb-1 inline font-medium">{{ item.product.title }}</h5>
               <h4 class="inline font-medium">{{ item.price | money }}</h4>
