@@ -1,5 +1,5 @@
-<div>
-  <section class="ml-4 mr-6 md:w-5/6 md:m-auto">
+<div class="w-5/6 m-auto">
+  <section class="ml-4 mr-6">
     <h1 class="mt-12 mb-8 text-3xl font-medium">{{ section.settings.cart.title }}Your Cart</h1>
     <div class="flex justify-between">
       <p class="text-xs">PRODUCT</p>
@@ -8,7 +8,7 @@
     <hr class="my-4">
   </section>
 
-  <div class="flex flex-col items-center m-auto">
+  <div class="flex flex-col items-center">
     <form class="mb-16" action="{{ routes.cart_url }}" method="post">
       {% for item in cart.items %}
         <section class="flex justify-between">
