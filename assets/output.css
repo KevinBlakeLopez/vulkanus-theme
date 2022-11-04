@@ -1152,6 +1152,10 @@ video {
     flex-direction: row;
   }
 
+  .md\:items-stretch {
+    align-items: stretch;
+  }
+
   .md\:justify-between {
     justify-content: space-between;
   }

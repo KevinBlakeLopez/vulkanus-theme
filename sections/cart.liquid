@@ -8,12 +8,22 @@
     <hr class="my-4">
   </section>
 
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center md:items-stretch">
     <form class="mb-16" action="{{ routes.cart_url }}" method="post">
       {% for item in cart.items %}
         <section class="flex justify-between">
           <div class="basis-48 grow-0">{{ item | image_url: width: 400 | image_tag }}</div>
           <div class="flex flex-col pl-4 pb-6">
+            <div class="flex justify-between">
+              <h5 class="mb-1 inline font-medium">{{ item.product.title }}</h5>
+              <h4 class="inline font-medium">{{ item.price | money }}</h4>
+            </div>
+            <h5 class="text-sm">{{ item.variant.title }}</h5>
+            <h5 class="text-sm mb-3">{{ item.price | money }}</h5>
+            <div class="flex mb-8">
+              <input class="text-black w-36 mr-3 p-2" type="text" name="updates[]" value="{{ item.quantity }}">
+              <a class="underline" href="{{ item.url_to_remove }}">Remove</a>
+            </div>
             <div class="flex justify-between">
               <h5 class="mb-1 inline font-medium">{{ item.product.title }}</h5>
               <h4 class="inline font-medium">{{ item.price | money }}</h4>
@@ -42,7 +52,7 @@
       <div class="text-center">
         <h2 class="font-medium inline">Subtotal</h2>
         <h2 class="text-l inline">{{ cart.items_subtotal_price | money }}</h2>
-        <p class="text-xs">Taxes and shipping calculated at checkout</p>
+        <p class="text-xs mt-4">Taxes and shipping calculated at checkout</p>
       </div>
       <input
         class="block w-80 md:w-full bg-black border p-2 px-8 my-6 mx-auto"
