@@ -40,9 +40,12 @@
       <h2 class="text-l inline">{{ cart.items_subtotal_price | money }}</h2>
       <p class="text-xs">Taxes and shipping calculated at checkout</p>
     </div>
-    <div class="m-auto">
-      <input class="block w-80 md:w-full bg-black border p-2 px-8 m-6 " type="submit" name="checkout" value="Check out">
-    </div>
+    <input
+      class="block w-80 md:w-full bg-black border p-2 px-8 my-6 mx-auto"
+      type="submit"
+      name="checkout"
+      value="Check out"
+    >
   </form>
   {% comment %}
      <p>{{ cart.attributes }}</p>

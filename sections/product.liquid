@@ -8,39 +8,43 @@
     <h3 id="price" class="text-xl text-amber-500 mb-6">{{ product.price | money }}</h3>
 
     {% form 'product', product %}
-      <label class="mr-6 md:block" for="quantity">Quantity:</label>
-      <input
-        class="bg-hed hover:bg-amber-500 border-2 rounded-sm mb-6 p-2"
-        type="text"
-        name="quantity"
-        min="1"
-        value="1"
-        id="quantity"
-      >
+      <div class="flex justify-between">
+        <label class="mr-6 md:block" for="quantity">Quantity:</label>
+        <input
+          class="bg-hed hover:bg-amber-500 border-2 rounded-sm mb-6 p-2"
+          type="text"
+          name="quantity"
+          min="1"
+          value="1"
+          id="quantity"
+        >
+      </div>
 
-      <label class="mr-14 md:block" for="size">Size:</label>
-      <select
-        class="bg-hed hover:bg-amber-500 active:text-black border-2 rounded-sm mb-8 p-2 w-[243px]"
-        name="id"
-        id="ProductSelect-{{ section.id }}"
-        class="product-form__variants no-js"
-        onChange="updatePrice(this);"
-      >
-        {% for variant in product.variants %}
-          {% if variant.available %}
-            <option
-              value="{{ variant.id }}"
-              {% if variant == product.selected_or_first_available_variant %}
-                selected="selected"
-              {% endif %}
-            >
-              {{ variant.title }}
-            </option>
-          {% else %}
-            <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
-          {% endif %}
-        {% endfor %}
-      </select>
+      <div class="flex justify-between">
+        <label class="mr-14 md:block" for="size">Size:</label>
+        <select
+          class="bg-hed hover:bg-amber-500 active:text-black border-2 rounded-sm mb-8 p-2 w-[197px] md:w-[243px]"
+          name="id"
+          id="ProductSelect-{{ section.id }}"
+          class="product-form__variants no-js"
+          onChange="updatePrice(this);"
+        >
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <option
+                value="{{ variant.id }}"
+                {% if variant == product.selected_or_first_available_variant %}
+                  selected="selected"
+                {% endif %}
+              >
+                {{ variant.title }}
+              </option>
+            {% else %}
+              <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
 
       <input
         class="block w-full bg-slate-900 hover:bg-amber-500 border-2 rounded-sm p-2 mx-auto mb-6"
